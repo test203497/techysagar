@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <td colspan='3'><a class="action primary" href="<?= $block->getUrl('sagar/index/insert') ?>">Add Record</a></td>
+  </tr>
+  <tr>
+   <th><?= __('Title'); ?></th>
+   <th><?= __('Created At'); ?></th>
+   <th colspan="2"><?= __('Action'); ?></th>
+  </tr>
+ <?php
+    $collectionData = $block->getDataDisplay();
+    foreach($collectionData as $collection):
+  ?>
+  <tr>
+    <td><?= $collection->getTitle(); ?></td>
+    <td><?= $collection->getCreated_at(); ?></td>
+    <td data-th="<?= $block->escapeHtml(__('Action')) ?>" class="col delete">
+      <!--<a href="<?php //echo $block->getDeleteAction() .'id/' . $collection->getId(); ?>"><?php //echo __('Delete') ?></a>-->
+      <!--<a href="<?php //echo $block->getDeleteAction(); ?>"><?php //echo __('Delete') ?></a>-->
+      <a href="<?php echo $block->getUrl('sagar/index/delete').'?id='.$collection->getId(); ?>" class="action primary">Delete</a>
+    </td>
+  </tr>
+<?php endforeach; ?>
+</table>
